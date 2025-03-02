@@ -83,6 +83,7 @@ const Home = () => {
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     display: "flex",
+                    alignItems: "center",
                     flexWrap: "wrap",
                     textAlign: "center",
                   }}
@@ -143,7 +144,7 @@ const Home = () => {
             letterSpacing: "0%",
             color: "white", // Text color
             WebkitTextStroke: "2px #e3e3e3c2", // Border effect
-           
+
             position: "absolute",
             top: "40px"
           }}
@@ -158,7 +159,7 @@ const Home = () => {
           gap: "3rem",
           zIndex: '1',
           padding: "100px",
-          flexDirection:isMobile? "column":"row",
+          flexDirection: isMobile ? "column" : "row",
 
         }}>
           <Typography
@@ -173,7 +174,7 @@ const Home = () => {
           <Typography sx={{
             fontFamily: "Satoshi, sans-serif",
             fontWeight: 100,
-            fontSize: isMobile? "19px" : "25px",
+            fontSize: isMobile ? "19px" : "25px",
             lineHeight: "39.15px",
             letterSpacing: "0%",
           }}>Welcome to Trading School, where our mission is to evolve individuals with the knowledge and skills needed to achieve financial independence through trading. Our academy is dedicated to delivering results-driven education, focusing on practical trading strategies and real-world application rather than merely selling courses. We have our own methodology of trading strategy, that is why we are confident to announce pay after profit training program.</Typography>
@@ -181,9 +182,53 @@ const Home = () => {
       </Box>
       <Box>
         {/* third box */}
-        <ScrollableCards/>
+        <ScrollableCards />
       </Box>
-      
+
+      <Box
+        sx={{
+          position: "relative",
+          display: "flex",
+          overflow: "hidden",
+          background: "#0A1931",
+
+        }}
+      >
+        <Typography
+          sx={{
+            fontFamily: "Be Vietnam Pro",
+            fontWeight: 600,
+            fontSize: "254.54px",
+            lineHeight: "286px",
+            letterSpacing: "0%",
+            color: "#0A1931",
+            WebkitTextStroke: "1px rgba(216, 240, 255, 0.22)",
+            position: "absolute",
+            top: "40px",
+            left: "70%", 
+            transform: "translateX(-50%)", 
+            textAlign: "center",
+            whiteSpace: "nowrap" 
+          }}
+        >
+          What We Offer
+        </Typography>
+
+        <Box sx={{
+          display: "flex",
+          justifyContent: "center",
+          width: isMobile ? "calc(100% - 120px)" : "calc(100% - 400px)",
+          margin: "0 auto",
+          gap: "3rem",
+          zIndex: '1',
+          padding: "100px",
+          flexDirection: isMobile ? "column" : "row",
+
+        }}>
+        
+        </Box>
+      </Box>
+
     </>
   );
 };
