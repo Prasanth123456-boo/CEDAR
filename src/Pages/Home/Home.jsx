@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import HeroImg from "../../assets/Hero_img.png"
 import { useTheme } from "@mui/material/styles";
 import ScrollableCards from "../../Components/ScrollCards/ScrollableCards";
+import UIUX from "../../assets/Icon-PNG/UIUX.png"
 
 const letterAnimation = {
   hidden: { opacity: 0, y: 10 },
@@ -37,7 +38,15 @@ const Home = () => {
     }, 6000);
     return () => clearInterval(interval);
   }, []);
+  const scrollRef = useRef(null);
 
+  // Function to scroll left
+  const handleScroll = (event) => {
+    if (scrollRef.current) {
+      event.preventDefault(); // Prevents default vertical scrolling
+      scrollRef.current.scrollLeft += event.deltaY; // Moves content horizontally
+    }
+  };
   return (
     <>
       <Box
@@ -160,7 +169,6 @@ const Home = () => {
           zIndex: '1',
           padding: "100px",
           flexDirection: isMobile ? "column" : "row",
-
         }}>
           <Typography
             sx={{
@@ -204,30 +212,256 @@ const Home = () => {
             color: "#0A1931",
             WebkitTextStroke: "1px rgba(216, 240, 255, 0.22)",
             position: "absolute",
-            top: "40px",
-            left: "70%", 
-            transform: "translateX(-50%)", 
+            top: "128px",
+            left: "70%",
+            transform: "translateX(-50%)",
             textAlign: "center",
-            whiteSpace: "nowrap" 
+            whiteSpace: "nowrap"
           }}
         >
           What We Offer
         </Typography>
 
-        <Box sx={{
-          display: "flex",
-          justifyContent: "center",
-          width: isMobile ? "calc(100% - 120px)" : "calc(100% - 400px)",
-          margin: "0 auto",
-          gap: "3rem",
-          zIndex: '1',
-          padding: "100px",
-          flexDirection: isMobile ? "column" : "row",
+        <Box
+          ref={scrollRef}
+          onWheel={handleScroll}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            width: isMobile ? "calc(100% - 120px)" : "calc(100% - 400px)",
+            margin: "0 auto",
+            gap: "3rem",
+            zIndex: '1',
+            flexDirection: isMobile ? "column" : "row",
 
-        }}>
-        
+          }}>
+
+          <Box sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            // width: isMobile ? "calc(100% - 120px)" : "calc(100% - 400px)",
+            margin: "0 auto",
+            gap: "3rem",
+            zIndex: '1',
+            paddingTop: "200px",
+            paddingBottom: "200px",
+            flexDirection: isMobile ? "column" : "row",
+            width: "100%"
+
+          }}>
+            <Box sx={
+              {
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                gap: '20px',
+                alignItems: "center"
+              }
+            }>
+              <Typography
+                sx={{
+                  fontFamily: 'Satoshi, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '40px',
+                  lineHeight: '54px',
+                  letterSpacing: '0%',
+                  color: "#FFFFFF"
+                }}
+              >What We Offer</Typography>
+              <Button
+                sx={{
+                  backgroundColor: "#fff",
+                  color: " #050914",
+                  width: "220px",
+                  padding: "10px",
+                  borderRadius: "100px"
+                }}
+              >Explore Our Services</Button>
+            </Box>
+
+            <Box sx={{
+              // width:"100rem" 
+            }}>
+              <Box sx={{
+                display: "flex",
+                // justifyContent: "center",
+                alignItems: "center",
+                gap: "30px",
+              }}>
+                <Box
+                  sx={{
+                    width: "105px",
+                    height: "105px",
+                    borderRadius: "17px",
+                    padding: "10px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "#8BD7FF",
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={UIUX}
+                    alt="Image"
+                    sx={{
+                      width: "63px", // Adjusted size
+                      height: "63px",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
+                </Box>
+                <Typography sx={{
+                  fontFamily: "Satoshi, sans-serif",
+                  fontWeight: 700,
+                  fontSize: "32px",
+                  lineHeight: "43.2px",
+                  letterSpacing: "0%",
+                  color: "#fff"
+                }}>UI/UX Desigining</Typography>
+              </Box>
+              <Typography sx={{
+                fontFamily: "Satoshi, sans-serif",
+                fontWeight: 400,
+                fontSize: "30px",
+                lineHeight: "40.5px",
+                letterSpacing: "0%",
+                color: "#fff"
+              }}>
+                From beginners to expert traders, our courses cover all elements of trading, equipping you with the right information
+              </Typography>
+            </Box>
+
+            <Box sx={{
+              // width:"100rem"
+            }}>
+              <Box sx={{
+                display: "flex",
+                // justifyContent: "center",
+                alignItems: "center",
+                gap: "30px",
+              }}>
+                <Box
+                  sx={{
+                    width: "105px",
+                    height: "105px",
+                    borderRadius: "17px",
+                    padding: "10px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "#8BD7FF",
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={UIUX}
+                    alt="Image"
+                    sx={{
+                      width: "63px", // Adjusted size
+                      height: "63px",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
+                </Box>
+                <Typography sx={{
+                  fontFamily: "Satoshi, sans-serif",
+                  fontWeight: 700,
+                  fontSize: "32px",
+                  lineHeight: "43.2px",
+                  letterSpacing: "0%",
+                  color: "#fff"
+                }}>UI/UX Desigining</Typography>
+              </Box>
+              <Typography sx={{
+                fontFamily: "Satoshi, sans-serif",
+                fontWeight: 400,
+                fontSize: "30px",
+                lineHeight: "40.5px",
+                letterSpacing: "0%",
+                color: "#fff"
+              }}>
+                From beginners to expert traders, our courses cover all elements of trading, equipping you with the right information
+              </Typography>
+            </Box>
+
+            <Box sx={{
+              // width:"100rem"
+            }}>
+              <Box sx={{
+                display: "flex",
+                // justifyContent: "center",
+                alignItems: "center",
+                gap: "30px",
+              }}>
+                <Box
+                  sx={{
+                    width: "105px",
+                    height: "105px",
+                    borderRadius: "17px",
+                    padding: "10px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "#8BD7FF",
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={UIUX}
+                    alt="Image"
+                    sx={{
+                      width: "63px", // Adjusted size
+                      height: "63px",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
+                </Box>
+                <Typography sx={{
+                  fontFamily: "Satoshi, sans-serif",
+                  fontWeight: 700,
+                  fontSize: "32px",
+                  lineHeight: "43.2px",
+                  letterSpacing: "0%",
+                  color: "#fff"
+                }}>UI/UX Desigining</Typography>
+              </Box>
+              <Typography sx={{
+                fontFamily: "Satoshi, sans-serif",
+                fontWeight: 400,
+                fontSize: "30px",
+                lineHeight: "40.5px",
+                letterSpacing: "0%",
+                color: "#fff"
+              }}>
+                From beginners to expert traders, our courses cover all elements of trading, equipping you with the right information
+              </Typography>
+            </Box>
+          </Box>
+
         </Box>
+
+
+
       </Box>
+      
+
+      <Box sx={{
+        height:"530px"
+      }}>
+        <Typography sx={{
+          fontSize:"40px",
+          lineHeight:"60px",
+          letterSpacing:"-2%",
+          fontWeight:"700",
+          color:"#061C3D"
+        }}>What our client says about our services.</Typography>
+      </Box>
+
 
     </>
   );
