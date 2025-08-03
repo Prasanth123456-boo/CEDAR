@@ -11,7 +11,7 @@ import "@fontsource/merriweather";
 import "@fontsource/space-mono/700.css";
 
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
+  <BrowserRouter basename="/CEDAR">
   <StrictMode>
     <App />
   </StrictMode>
