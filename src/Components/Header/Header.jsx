@@ -6,9 +6,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import * as THREE from 'three';
+import  logo  from "../../assets/logo.png"
 
-// You can replace this with your actual logo path
-const logo = "https://img.icons8.com/fluency/96/cedar.png";
 
 const fadeIn = {
   hidden: { opacity: 0 },
@@ -138,6 +137,9 @@ const Header = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  const leftNavItems = ["About Us", "Services"];
+  const rightNavItems = ["Careers", "Contact Us"];
+
   return (
     <Box
       sx={{
@@ -163,8 +165,44 @@ const Header = () => {
       {/* Three.js Background */}
       <ThreeBackground />
 
-      {/* Logo Section */}
-      <Box sx={{ display: "flex", alignItems: "center", zIndex: 2 }}>
+      {/* Left Navigation Items */}
+      <Box
+        sx={{
+          display: { xs: "none", md: "flex" },
+          alignItems: "center",
+          gap: "20px",
+          zIndex: 2,
+          flex: 1
+        }}
+      >
+        {leftNavItems.map((text, index) => (
+          <Link key={index} to={`/CEDAR/${text.toLowerCase().replace(" ", "")}`} style={{ textDecoration: "none", color: "inherit" }}>
+            <MotionTypography
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+              whileHover={{ 
+                scale: 1.1, 
+                color: "#fff",
+                textShadow: "0 0 10px rgba(255,255,255,0.8)"
+              }}
+              transition={{ duration: 0.2 }}
+              sx={{ 
+                fontSize: "15px", 
+                cursor: "pointer", 
+                fontWeight: "400",
+                color: "#fff",
+                position: "relative"
+              }}
+            >
+              {text}
+            </MotionTypography>
+          </Link>
+        ))}
+      </Box>
+
+      {/* Center Logo Section */}
+      <Box sx={{ display: "flex", alignItems: "center", zIndex: 2, justifyContent: "center" }}>
         <Link to='/' style={{ textDecoration: "none", color: "inherit" }}>
           <MotionTypography
             initial="hidden"
@@ -204,17 +242,18 @@ const Header = () => {
         </Link>
       </Box>
 
-      {/* Desktop Navigation */}
+      {/* Right Navigation Items */}
       <Box
         sx={{
           display: { xs: "none", md: "flex" },
-          justifyContent: "center",
           alignItems: "center",
           gap: "20px",
-          zIndex: 2
+          zIndex: 2,
+          flex: 1,
+          justifyContent: "flex-end"
         }}
       >
-        {["About Us", "Services", "Careers", "Contact Us"].map((text, index) => (
+        {rightNavItems.map((text, index) => (
           <Link key={index} to={`/CEDAR/${text.toLowerCase().replace(" ", "")}`} style={{ textDecoration: "none", color: "inherit" }}>
             <MotionTypography
               initial="hidden"

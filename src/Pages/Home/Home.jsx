@@ -8,9 +8,8 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import PeopleIcon from '@mui/icons-material/People';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import HeroImg from "../../assets/Hero_img.png"
 
-// You can replace this with your actual hero image
-const HeroImg = "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80";
 const UIUX = "https://img.icons8.com/fluency/96/web-design.png";
 
 const letterAnimation = {
@@ -22,6 +21,8 @@ const letterAnimation = {
   }),
 };
 
+
+
 const fadeAnimation = {
   hidden: { opacity: 0, y: -10 },
   visible: { opacity: 1, y: 0, transition: { duration: 1.8 } },
@@ -29,6 +30,7 @@ const fadeAnimation = {
 };
 
 const texts = [
+  "Empowering Businesses with Smart Websites and Automation",
   "Empowering Businesses with Innovative IT Solutions.",
   "Transforming Ideas into Reality with Cutting-Edge Technology.",
   "Your Trusted Partner for Scalable and Secure IT Services.",
@@ -331,6 +333,7 @@ const Home = () => {
       <Box
         sx={{
           backgroundImage: `linear-gradient(rgba(5, 9, 20, 0.7), rgba(5, 9, 20, 0.7)), url(${HeroImg})`,
+          // background: `linear-gradient(rgba(64, 107, 222, 0.7), rgba(73, 84, 113, 0.7))`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           minHeight: "100vh",
@@ -350,12 +353,13 @@ const Home = () => {
               <Typography
                 component="div"
                 sx={{
-                  fontSize: { xs: "2.5rem", md: "4rem" },
+                  fontSize: { xs: "1.2rem", md: "2.2rem" },
                   fontWeight: "bold",
                   fontFamily: "'Merriweather', serif",
                   lineHeight: "1.3",
                   color: "white",
                   mb: 4
+
                 }}
               >
                 {texts[index].split("").map((char, i) => (
@@ -375,10 +379,11 @@ const Home = () => {
               maxWidth: "600px",
               margin: "0 auto"
             }}>
-              India's first profit driven trading academy. We are confident because we are Enigma trader
+              Empower your business with the transformative power of intelligent automation.
             </Typography>
             <Button
               sx={{
+                m:5,
                 backgroundColor: "#fff",
                 color: "#050914",
                 px: 4,
@@ -389,7 +394,7 @@ const Home = () => {
                 "&:hover": { backgroundColor: "#f5f5f5" }
               }}
             >
-              Get Started
+             Book Appointment
             </Button>
           </Box>
         </Box>
@@ -650,3 +655,21 @@ const Home = () => {
 };
 
 export default Home;
+
+const GlassButton = ({ children, variant = "primary", size = "medium", onClick, style = {} }) => {
+  const baseStyles = {
+    padding: size === "large" ? "16px 32px" : size === "medium" ? "12px 24px" : "8px 16px",
+    borderRadius: "25px",
+    border: "1px solid rgba(255, 255, 255, 0.2)",
+    cursor: "pointer",
+    fontSize: size === "large" ? "1.1rem" : size === "medium" ? "1rem" : "0.9rem",
+    fontWeight: "600",
+    transition: "all 0.3s ease",
+    backdropFilter: "blur(10px)",
+    WebkitBackdropFilter: "blur(10px)",
+    textAlign: "center",
+    display: "inline-block",
+    textDecoration: "none",
+    ...style
+  };
+}
